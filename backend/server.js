@@ -6,6 +6,10 @@ const connectDB = require('./config/db');
 // Importamos el modelo para hacer la prueba
 const Salon = require('./models/Salon');
 
+// === IMPORTACIÓN DE RUTAS DEL TICKET ===
+const serviceRoutes = require('./routes/service.routes.js');
+// ======================================
+
 const app = express();
 
 // Middlewares
@@ -38,6 +42,11 @@ app.get('/api/test-db', async (req, res) => {
     }
 });
 // -------------------------------
+
+// === RUTAS OFICIALES DEL PROYECTO ===
+// Vinculamos el endpoint base con las rutas que creaste
+app.use('/api/services', serviceRoutes);
+// =====================================
 
 const PORT = process.env.PORT || 5000;
 
